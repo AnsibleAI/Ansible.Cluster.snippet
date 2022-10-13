@@ -1,0 +1,13 @@
+---
+
+- name: Get all Node IPs
+  debug:
+    msg: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | join(',') }}"
+
+- name: Get other Node IPs
+  debug:
+    msg: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | difference( ansible_default_ipv4.address ) }}"
+
+
+# https://stackoverflow.com/questions/36328907/ansible-get-all-the-ip-addresses-of-a-group/61552205#61552205
+# https://stackoverflow.com/questions/40927792/ansible-how-to-remove-an-item-from-a-list

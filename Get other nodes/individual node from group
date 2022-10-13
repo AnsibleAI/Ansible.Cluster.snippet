@@ -1,0 +1,6 @@
+---
+
+- name: Get 1st host in Storage Cluster!
+  debug:
+    msg: "{{ hostvars[groups['nodes'][0]]['ansible_default_ipv4'].address }}"
+    msg: "{{ hostvars[groups['nodes'][0]]['ansible_hostname'] }}"

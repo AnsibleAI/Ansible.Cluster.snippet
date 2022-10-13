@@ -1,0 +1,16 @@
+# https://www.google.com/search?q=ansible+get+variable+from+another+host
+
+# https://stackoverflow.com/questions/48936489/ansible-use-variable-from-another-host
+
+
+- name: print hostname and IP address
+  debug:
+    # var: hostvars[item].ansible_hostname
+    var: hostvars[item].ansible_default_ipv4.address
+  with_items: "{{ groups['nodes'] }}"
+
+
+- name: print value_to_reuse
+  debug:
+    # var: hostvars[groups['nodes'][0]].ansible_hostname
+    var: hostvars[groups['nodes'][0]].ansible_nodename

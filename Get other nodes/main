@@ -1,4 +1,11 @@
 ---
+# Requires Gather Facts, to run on all nodes! Else will not work
+'''
+- hosts: nodes
+  gather_facts: true
+'''
+#y.......................
+
 - name: Get all nodes
   set_fact:
     all_nodes: "{{ groups['nodes'] }}"  # List

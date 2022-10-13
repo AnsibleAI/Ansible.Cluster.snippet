@@ -1,5 +1,13 @@
 ---
+- name: Get all nodes
+  set_fact:
+    all_nodes: "{{ groups['nodes'] }}"  # List
 
+- debug:
+    msg: "{{all_nodes}}"
+
+
+# Alt.......................
 - name: Get all Node IPs
   debug:
     msg: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_default_ipv4', 'address']) | join(',') }}"

@@ -1,0 +1,9 @@
+---
+# Quick and dirty, but NOT ideal when you have TONS of hosts!
+# https://stackoverflow.com/questions/58859092/how-do-i-correctly-use-the-ansible-hostname-module
+
+- hosts: k8s_kvm_vms
+  tasks:
+  - name: "update hostnames"
+    hostname:
+      name: "{{ new_hostname }}"

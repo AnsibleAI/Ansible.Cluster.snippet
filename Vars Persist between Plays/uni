@@ -1,0 +1,14 @@
+- hosts: nodes
+  gather_facts: true
+  vars:
+    filesystem: "btrfs"
+    lvm: false
+  roles:
+  - Storage cluster
+
+- hosts: single
+  vars:   # Make vars persist between Plays. Solution: https://stackoverflow.com/questions/33896847/how-do-i-set-register-a-variable-to-persist-between-plays-in-ansible
+    filesystem: "{{ hostvars['nodes']['filesystem'] }}"
+    lvm: "{{ hostvars['nodes']['lvm'] }}"
+  roles:
+  - Volume/create/simple volume

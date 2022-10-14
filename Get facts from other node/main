@@ -12,5 +12,4 @@
 
 - name: print value_to_reuse
   debug:
-    # var: hostvars[groups['nodes'][0]].ansible_hostname
-    var: hostvars[groups['nodes'][0]].ansible_nodename
+    var: hostvars[groups['nodes'][0]].ansible_hostname

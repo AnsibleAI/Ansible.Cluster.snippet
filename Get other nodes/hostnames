@@ -1,0 +1,9 @@
+---
+
+- name: Get all Node Hostnames as List
+  debug:
+    msg: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_hostname']) }}"
+
+- name: Get all Node Hostnames as String
+  debug:
+    msg: "{{ groups['nodes'] | map('extract', hostvars, ['ansible_hostname']) | join(',') }}"
